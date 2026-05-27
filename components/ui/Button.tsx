@@ -5,9 +5,9 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
         children?: ReactNode;
 }
 
-export default function CustomButton({ label, children, className, ...props }: ButtonProps) {
+export default function CustomButton({ label, children, className = "", ...props }: ButtonProps) {
         return (
-                <button className={className ?? ""} {...props}>
+                <button className={`bg-black rounded-xl active:bg-gray-800 text-white ${className}`} {...props}>
                         {label}
                         {children}
                 </button >

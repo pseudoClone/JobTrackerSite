@@ -24,7 +24,7 @@ export default function ImageWithTabs() {
                                                 onClick={() => setActiveTab("Boards")} />
                                 </div>
                                 <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-gray-200 shadow-xl">
-                                        {activeTab === "Organize" && <Image src="/hero1.png" alt="Organize Applications" width={1200} height={800} />}
+                                        {activeTab === "Organize" && <Image src="/hero1.png" alt="Organize Applications" width={1200} height={800} loading="eager" />}
                                         {activeTab === "Hired" && <Image src="/hero2.png" alt="Get Hired" width={1200} height={800} />}
                                         {activeTab === "Boards" && <Image src="/hero3.png" alt="Manage Boards" width={1200} height={800} />}
                                 </div>

@@ -1,5 +1,5 @@
 import ImageWithTabs from "@/components/client/ImageWithTabs";
-import CustomButton from "@/components/ui/Button";
+import { Button } from "@/components/ui/Button";
 import { ArrowRight, Briefcase, CheckCircle2, TrendingUp } from "lucide-react";
 import Link from "next/link";
 
@@ -15,9 +15,9 @@ export default function Home() {
             <div className="flex flex-col items-center mb-10 text-xl">
               {/* <button className="bg-emerald-600 p-2 rounded-xl mb-2 mt-2"> Start for free </button> */}
               <Link href="/sign-up">
-                <CustomButton className="flex items-center mb-4 px-4 py-2 mt-4 bg-black text-white" label="Start for free">
-                  <ArrowRight size={18} />
-                </CustomButton>
+                <Button className="flex items-center mb-4 px-4 py-2 mt-4 bg-black text-white">
+                  Start for free<ArrowRight size={18} />
+                </Button>
               </Link>
               <p className="text-gray-400 text-sm mb-64">Free forever. No cost.</p>
             </div>

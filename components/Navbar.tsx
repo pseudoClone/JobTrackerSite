@@ -1,6 +1,6 @@
 import { Briefcase } from "lucide-react";
 import Link from "next/link";
-import CustomButton from "./ui/Button";
+import { Button } from "./ui/Button";
 
 export default function Navbar() {
         return (
@@ -13,11 +13,15 @@ export default function Navbar() {
                                 <div className="flex">
 
                                         <Link href="/sign-up">
-                                                <CustomButton label="Start for free" className="mx-2 px-2 py-1 hover:bg-black/80" />
+                                                <Button className="mx-2 px-2 py-1 hover:bg-black/80" >
+                                                        Start for free
+                                                </Button>
                                         </Link>
 
                                         <Link href="/sign-in">
-                                                <CustomButton label="Sign in" className="mx-2 px-2 py-1 hover:bg-black/80" />
+                                                <Button className="mx-2 px-2 py-1 hover:bg-black/80" >
+                                                        Sign in
+                                                </Button>
                                         </Link>
                                 </div>
                         </div>

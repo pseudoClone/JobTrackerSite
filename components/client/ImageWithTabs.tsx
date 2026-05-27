@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import CustomButton from "@/components/ui/Button";
+import { Button } from "../ui/Button";
 import Image from "next/image";
 
 export default function ImageWithTabs() {
@@ -11,17 +11,22 @@ export default function ImageWithTabs() {
                         <div className="mx-auto px-4 max-w-6xl">
                                 {/* Tabs */}
                                 <div className="flex gap-2 justify-center mb-8">
-                                        <CustomButton
-                                                label="Organize Applications"
+                                        <Button
                                                 className={`rounded-lg px-6 py-3 text-sm transition-colors 
                 ${activeTab === "Organize" ? "bg-black text-emerald-300" : "bg-blue-500 text-white"}`}
-                                                onClick={() => setActiveTab("Organize")} />
-                                        <CustomButton label="Get Hired" className={`rounded-lg px-6 py-3 text-sm transition-colors 
+                                                onClick={() => setActiveTab("Organize")}>
+                                                Organize Applications
+                                        </Button>
+                                        <Button className={`rounded-lg px-6 py-3 text-sm transition-colors 
                 ${activeTab === "Hired" ? "bg-black text-emerald-300" : "bg-blue-500 text-white"}`}
-                                                onClick={() => setActiveTab("Hired")} />
-                                        <CustomButton label="Manage Boards" className={`rounded-lg px-6 py-3 text-sm transition-colors 
+                                                onClick={() => setActiveTab("Hired")}>
+                                                Get Hired
+                                        </Button>
+                                        <Button className={`rounded-lg px-6 py-3 text-sm transition-colors 
                 ${activeTab === "Boards" ? "bg-black text-emerald-300" : "bg-blue-500 text-white"}`}
-                                                onClick={() => setActiveTab("Boards")} />
+                                                onClick={() => setActiveTab("Boards")} >
+                                                Manage Boards
+                                        </Button>
                                 </div>
                                 <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-gray-200 shadow-xl">
                                         {activeTab === "Organize" && <Image src="/hero1.png" alt="Organize Applications" width={1200} height={800} loading="eager" />}

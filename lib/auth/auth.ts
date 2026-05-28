@@ -1,6 +1,8 @@
 import { betterAuth } from "better-auth";
-import { mongodbAdapter } from "@better-auth/mongo-adapter"; // Updated import
+import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { MongoClient } from "mongodb";
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 declare global {
         var _mongoClient: MongoClient | undefined;
@@ -12,7 +14,6 @@ if (!process.env.MONGODB_URI) {
 
 const uri = process.env.MONGODB_URI;
 
-// Prevent multiple MongoClient instances in development hot-reloads
 let client: MongoClient;
 
 if (process.env.NODE_ENV === "development") {
@@ -34,3 +35,21 @@ export const auth = betterAuth({
                 enabled: true,
         },
 });
+
+// Since navbar is not a Client Side component, we use auth's getsession to check if the user is validated. 
+// If auth flips out because I used it in sign up and sign in, I'm fucked
+export async function getSession() {
+        const result = await auth.api.getSession({
+                headers: await headers(), //Allows me to read HTTP headers in Server Components, ....
+        })
+        return result;
+}
+
+export async function signOut() {
+        const result = await auth.api.signOut({
+                headers: await headers(),
+        });
+        if (result.success) {
+                redirect("/sign-in")
+        }
+}

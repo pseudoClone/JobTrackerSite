@@ -3,6 +3,8 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { MongoClient } from "mongodb";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { initialize } from "next/dist/server/lib/render-server";
+import { initializeUserBoard } from "../init-user-board";
 
 declare global {
         var _mongoClient: MongoClient | undefined;
@@ -33,6 +35,18 @@ export const auth = betterAuth({
         }),
         emailAndPassword: {
                 enabled: true,
+        },
+        databaseHooks: {
+                user: {
+                        create: {
+                                after: async (user) => {
+                                        if (user.id) {
+                                                await initializeUserBoard(user.id);
+                                        }
+
+                                },
+                        },
+                },
         },
 });
 

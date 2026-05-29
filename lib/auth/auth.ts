@@ -3,7 +3,6 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { MongoClient } from "mongodb";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { initialize } from "next/dist/server/lib/render-server";
 import { initializeUserBoard } from "../init-user-board";
 
 declare global {

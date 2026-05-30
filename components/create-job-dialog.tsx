@@ -1,9 +1,12 @@
+"use client";
+
 import { Plus } from "lucide-react";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Button } from "./ui/Button";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
+import { useState } from "react";
 
 interface CreateJobApplicationsDialogProps {
         columnId: string;
@@ -11,8 +14,9 @@ interface CreateJobApplicationsDialogProps {
 }
 
 export default function CreateJobApplicationsDialog({ columnId, boardId }: CreateJobApplicationsDialogProps) {
+        const [open, setOpen] = useState<boolean>(false);
         return (
-                <Dialog>
+                <Dialog open={open} onOpenChange={setOpen}>
                         <DialogTrigger>
                                 <Button>
                                         <Plus />
@@ -66,7 +70,7 @@ export default function CreateJobApplicationsDialog({ columnId, boardId }: Creat
                                                 </div>
                                         </div>
                                         <DialogFooter>
-                                                <Button type="button" variant="outline">Cancel</Button>
+                                                <Button type="button" variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
                                                 <Button type="submit">App Application</Button>
                                         </DialogFooter>
                                 </form>

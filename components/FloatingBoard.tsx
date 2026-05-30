@@ -4,6 +4,7 @@ import { Award, Calendar, CheckCircle2, Mic, MoreHorizontal, MoreVertical, Trash
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { Button } from "./ui/Button";
+import CreateJobApplicationsDialog from "./create-job-dialog";
 
 interface FloatingBoardProps {
         board: Board;
@@ -42,7 +43,7 @@ function DropableColumn({ column, config, boardId }: { column: Column; config: C
                                 </div>
                         </CardHeader>
                         <CardContent className="space-y-2 pt-4 bg-gray-50/50 min-h-120 rounded-b-lg">
-
+                                <CreateJobApplicationsDialog columnId={column._id} boardId={boardId} />
                         </CardContent>
                 </Card>
         );

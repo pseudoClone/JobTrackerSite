@@ -1,7 +1,9 @@
 "use client";
 import { Board, Column } from "@/lib/models/models.types";
-import { Award, Calendar, CheckCircle2, Mic, XCircle } from "lucide-react";
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Award, Calendar, CheckCircle2, Mic, MoreHorizontal, MoreVertical, Trash2, XCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { Button } from "./ui/Button";
 
 interface FloatingBoardProps {
         board: Board;
@@ -15,38 +17,56 @@ interface ColConfig {
 function DropableColumn({ column, config, boardId }: { column: Column; config: ColConfig; boardId: string }) {
         console.log(column)
         return (
-                <Card>
-                        <CardHeader className={`${config.color}`}>
+                <Card className="min-w-75 shrink-0 shadown-md p-0">
+                        <CardHeader className={`${config.color} text-white rounded-t-lg pb-3 pt-3`}>
                                 <div>
-                                        <div>
-                                                {config.icon}
-                                                <CardTitle>{column.name}</CardTitle>
+                                        <div className="flex items-center justify-between">
+                                                <div className="flex items-center gap-2">
+                                                        {config.icon}
+                                                        <CardTitle className="text-white text-base font-semibold">{column.name}</CardTitle>
+                                                </div>
                                         </div>
+                                        <DropdownMenu>
+                                                <DropdownMenuTrigger asChild>
+                                                        <Button variant="ghost" size="icon" className="h-6 w-6 text-white hover:bg-white/20">
+                                                                <MoreVertical className="h-4 w-4" />
+                                                        </Button>
+                                                </DropdownMenuTrigger>
+                                                <DropdownMenuContent align="end">
+                                                        <DropdownMenuItem className="min-w-fit">
+                                                                <Trash2 className="mr-2 h-4 w-4" />
+                                                                Delete Column
+                                                        </DropdownMenuItem>
+                                                </DropdownMenuContent>
+                                        </DropdownMenu>
                                 </div>
                         </CardHeader>
+                        <CardContent className="space-y-2 pt-4 bg-gray-50/50 min-h-120 rounded-b-lg">
+
+                        </CardContent>
                 </Card>
         );
 }
 
 const COLUMN_CONFIG: Array<ColConfig> = [
         {
-                color: "bg-cyan-500",
+                color: "bg-gray-500",
                 icon: <Calendar className="h-4 w-4" />
         },
         {
-                color: "bg-purple-500",
+                color: "bg-gray-600",
                 icon: <CheckCircle2 className="h-4 w-4" />
         },
         {
-                color: "bg-green-500",
+                color: "bg-gray-700",
                 icon: <Mic className="h-4 w-4" />
         },
         {
-                color: "bg-yellow-500",
+                color: "bg-gray-800",
                 icon: <Award className="h-4 w-4" />
         },
         {
-                color: "bg-red-500",
+                color: "bg-gray-900",
                 icon: <XCircle className="h-4 w-4" />
         }
 ]

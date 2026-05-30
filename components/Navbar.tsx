@@ -25,16 +25,16 @@ export default function Navbar() { // Server functions in NextJS can somehow be 
                                                         <Link href="/dashboard">
                                                                 <Button
                                                                         variant="ghost"
-                                                                        className="text-gray-700 hover:text-black"
+                                                                        className="text-black hover:text-blue-600"
                                                                 >
                                                                         Dashboard
                                                                 </Button>
                                                         </Link>
                                                         <DropdownMenu>
                                                                 <DropdownMenuTrigger asChild>
-                                                                        <Button variant="ghost" className="text-gray-700" >
+                                                                        <Button variant="ghost" className="text-black" >
                                                                                 <Avatar>
-                                                                                        <AvatarFallback className="bg-blue-400">
+                                                                                        <AvatarFallback className="bg-teal-400">
                                                                                                 {session.user.name[0].toUpperCase()}
                                                                                         </AvatarFallback>
                                                                                 </Avatar>

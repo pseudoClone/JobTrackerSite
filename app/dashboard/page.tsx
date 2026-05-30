@@ -15,6 +15,8 @@ export default async function Dashboard() {
         const board = await Board.findOne({
                 userId: session.user.id,
                 name: "Job Hunt",
+        }).populate({
+                path: "columns",
         });
         // console.log(board); // Check to see if we have the data in MongoDB collection or not(fails when login in fucked)
         return (

@@ -79,5 +79,5 @@ export async function createJobApplication(data: JobApplicationData) {
         await Column.findByIdAndUpdate(columnId, {
                 $push: { jobApplication: jobApplication._id },
         });
-        return { data: jobApplication };
+        return { data: JSON.parse(JSON.stringify(jobApplication)) };
 }

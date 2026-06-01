@@ -16,6 +16,9 @@ export default async function Dashboard() {
                 name: "Job Hunt",
         }).populate({
                 path: "columns",
+                populate: {
+                        path: "jobApplications",
+                },
         });
         // console.log(board); // Check to see if we have the data in MongoDB collection or not(fails when login in fucked)
         return (
